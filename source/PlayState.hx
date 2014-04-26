@@ -6,6 +6,7 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.group.FlxGroup;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -36,4 +37,59 @@ class PlayState extends FlxState
 	{
 		super.update();
 	}	
+}
+
+class Item {
+
+	public var id:Int;
+	public var graphic:FlxSprite;
+	public var position:Dynamic; // x, y 
+
+	public function new (id:Int, position:Dynamic, graphicImg:String/*, ?CallBack:Void*/){ // we must add a callback if it have an interaction
+
+		this.id = id;
+		this.graphic = new FlxSprite(position.x, position.y);
+		this.graphic.loadGraphic("assets/items/" +  graphicImg);
+	} 
+
+	public function update():Void {
+
+	}
+
+}
+
+class Room {
+
+	public var id:Int;
+	public var movement:Dynamic; // {up, right, down, left}
+	public var background:FlxSprite;
+
+	public function new (id:Int, movement:Dynamic, backgroundImg:String):Void
+	{
+		this.id = id;
+		this.movement = movement;
+		this.background = new FlxSprite();
+		this.background.loadGraphic("assets/rooms/" + backgroundImg); 
+	}
+
+	// paint everything: background + Controls   
+	public function update():Void {
+
+	}
+
+	private function controls():Void{
+
+	}
+}
+
+// Scene contains a Room Background + n Items 
+class Scene extends FlxGroup {
+
+	public var id:Int;
+
+	public function new(id:Int):Void {
+
+		this.id = id;
+		super();
+	}
 }
