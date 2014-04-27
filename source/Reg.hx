@@ -2,6 +2,9 @@ package;
 
 import flixel.util.FlxSave;
 
+
+
+
 /**
  * Handy, pre-built Registry class that can be used to store 
  * references to objects and other things for quick-access. Feel
@@ -36,4 +39,20 @@ class Reg
 	 * Especially useful for setting up multiple save slots.
 	 */
 	public static var saves:Array<FlxSave> = [];
+
+
+	public static var room:Array<Dynamic> = [
+		{
+			id: 0,
+			background: "0.png",
+			controls: {top: true, right: true, bottom: false, left: true},
+			directions: {top: 1, right: 2, left: 3}
+		},
+		{
+			id: 1,
+			background: "1.png",
+			controls: {bottom: true},
+			directions: {bottom: 0}
+		}
+	]; // end of
 }

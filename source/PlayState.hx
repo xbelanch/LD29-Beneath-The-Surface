@@ -7,9 +7,13 @@ import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
 import flixel.group.FlxGroup;
+import flixel.group.FlxTypedGroup;
 import flash.display.BitmapData;
 import flash.geom.Matrix;
 import flixel.plugin.MouseEventManager;
+import flash.display.Bitmap;
+import flash.events.Event;
+
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -20,29 +24,21 @@ class PlayState extends FlxState
 	 * Function that is called up when to state is created to set it up. 
 	 */
 
-	public var view:View;
-	public var move:Bool;
+	public var mainID:Int;
 	public var tf:FlxText;
-	public var scene:FlxGroup;
+	public var scene:Scene;
 
 
 
 	override public function create():Void
 	{
 
-		move = false;
-		view = new View(Reg.idView); // starts from zero 
-		add(view.background);
-		add(view.controls);
-
-		tf = new FlxText();
-		tf.x = 15;
-		tf.y = 15;
-		tf.width = FlxG.width;
-		add(tf);
-	
 
 
+		// test
+		mainID = Reg.idView;
+		scene = new Scene(Reg.idView);
+		add(scene.view);
 		super.create();
 	}
 	
@@ -61,40 +57,90 @@ class PlayState extends FlxState
 	override public function update():Void
 	{
 
-		if (move){
-			// mainScene.destroy();
-			// mainScene  = new  Scene(Reg.idView);
-			trace("Dummy");
+		if (Reg.idView != mainID){
+			trace(Reg.idView);
+			scene.update(Reg.idView);
+			mainID = Reg.idView;
 		}
 
-		// show info location pointer mouse
-		tf.text = "mouseX = " + Math.floor(FlxG.mouse.x) + "\n" + "mouseY = " + Math.floor(FlxG.mouse.y);
 		super.update();
 	}	
 }
 
-class Item {
+class Item extends FlxSprite {
 
 	public var id:Int;
-	public var graphic:FlxSprite;
 	public var position:Dynamic; // x, y 
 
-	public function new (id:Int, position:Dynamic, graphicImg:String/*, ?CallBack:Void*/){ // we must add a callback if it have an interaction
+	override public function new (id){ // we must add a callback if it have an interaction
 
+		super();
 		this.id = id;
-		this.graphic = new FlxSprite(position.x, position.y);
-		this.graphic.loadGraphic("assets/items/" +  graphicImg);
+
 	} 
-
-	public function update():Void {
-
-	}
 
 }
 
-// where we handle the movemement between views of the room
-class Controls {
 
+// Direction for controls 
+enum Dir {
+	Top;
+	Right;
+	Bottom;
+	Left;
+}
+
+// where we handle the movemement between views of the room
+class Direction extends FlxSprite {
+
+	public var idRoom: Int;
+
+	override public function new(Direction, idRoom:Int){
+
+		super();
+		this.idRoom = idRoom;
+		this.makeGraphic(32, 32, 0xffff0000);
+
+		switch (Direction) {
+			case Dir.Top:
+				this.x = Math.floor(FlxG.width / 2 - this.width/2); 
+			case Dir.Right: {
+				this.x = Math.floor(FlxG.width - this.width); 
+				this.y = Math.floor(FlxG.height/2  - this.height/2); 
+			}
+			case Dir.Bottom: {
+				this.x = Math.floor(FlxG.width / 2 - this.width/2); 
+				this.y = Math.floor(FlxG.height  - this.height); 
+			}
+			case Dir.Left: {
+				this.y = Math.floor(FlxG.height/2  - this.height/2);	
+			}
+		}
+
+		MouseEventManager.add(this, onDown, onUp, onOver, onOut, false, true, true); 
+	}
+
+	override public function destroy(){
+		MouseEventManager.remove(this);
+	}
+
+	private function onDown(Sprite:FlxSprite){
+		Sprite.color = 0xffffffff;
+		trace(idRoom);
+		Reg.idView = idRoom;
+	}
+
+	private function onUp(Sprite:FlxSprite){
+		Sprite.color = 0xffffffff;
+	}
+
+	private function onOver(Sprite:FlxSprite){
+		Sprite.color = 0xff00ffff;
+	}
+
+	private function onOut(Sprite:FlxSprite){
+		Sprite.color = 0xffff0000;
+	}
 
 }
 
@@ -102,66 +148,69 @@ class Inventory {
 
 }
 
-class View {
-
-	public var id:Int;
-	public var movement:Dynamic; // {up, right, down, left}
-	public var controls:FlxGroup;
-	public var background:FlxSprite;
-	private var rightDirection:FlxSprite;
-	private var leftDirection:FlxSprite;
-
-	public function new (id:Int, ?movement:Dynamic):Void
-	{
-		this.id = id;
-		this.movement = movement;
-		this.controls = new FlxGroup();
-		this.background = new FlxSprite();
-		this.background.loadGraphic("assets/images/views/" + Std.int(id) + ".png"); 
-		
-		this.rightDirection = new FlxSprite();
-		rightDirection.makeGraphic(64, 640, 0xffefefef);
-		rightDirection.x = FlxG.width - 64;
-		controls.add(rightDirection);
-
-		this.leftDirection = new FlxSprite();
-
-
-
-		MouseEventManager.add(rightDirection, onDown, null, onOver, onOut); 
-		MouseEventManager.add(leftDirection, onDown, null, onOver, onOut); 
-
-
-	}
-
-	// paint everything: background + Controls   
-	public function update():Void {
-
-	}
-
-	// mouse callbacks
-	private function onDown(Sprite:FlxSprite){
-		Sprite.color = 0xffff0000;
-		id = 1;
-	}
-	
-	private function onOver(Sprite:FlxSprite){
-		Sprite.alpha = 0.5;
-	}
-
-	private function onOut(Sprite:FlxSprite){
-		Sprite.alpha = 0.3;
-	}
-}
 
 // Scene contains a View background + n Items 
-class Scene extends FlxGroup {
+class Scene {
 
-	public var id:Int;
+	public var view:FlxTypedGroup<FlxSprite>;
+	public var sceneID:Dynamic;
+	public var background:FlxSprite;
+	public var dir:Int;
+
 
 	public function new(id:Int):Void {
 
-		this.id = id;
-		super();
+		sceneID = Reg.room[id];
+		view = new FlxTypedGroup<FlxSprite>();
+
+		// add background
+		background = new FlxSprite();
+		background.loadGraphic("assets/images/views/" + sceneID.background); 
+		view.add(background);
+
+		// add controls
+		addControls();
 	}
+
+	public function update(idRoom:Int){
+		sceneID = Reg.room[idRoom];
+		background.loadGraphic("assets/images/views/" + sceneID.background);
+		// remove controls
+		// background -> member 0
+		for (i in 1...view.members.length){
+			view.remove(view.members[i]);
+		}
+		// add controls for the new view
+		addControls();
+	}
+
+
+	private function addControls() {
+				// add directions controls
+		if (sceneID.controls.top){
+			var top = new Direction(Dir.Top, sceneID.directions.top);
+			view.add(top);
+		}
+
+		if (sceneID.controls.right){
+			var right = new Direction(Dir.Right, sceneID.directions.right);
+			view.add(right);
+		}
+
+		if (sceneID.controls.bottom){
+			var bottom = new Direction(Dir.Bottom, sceneID.directions.bottom);
+			view.add(bottom);
+		}
+
+		if (sceneID.controls.left){
+			var left = new Direction(Dir.Left, sceneID.directions.left);
+			view.add(left);
+		}
+	}
+
 }
+
+
+
+
+
