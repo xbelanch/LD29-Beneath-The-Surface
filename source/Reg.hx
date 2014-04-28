@@ -46,13 +46,47 @@ class Reg
 			id: 0,
 			background: "0.png",
 			controls: {top: true, right: true, bottom: false, left: true},
-			directions: {top: 1, right: 2, left: 3}
+			directions: {top: 1, right: 2, left: 3},
+			items: []
+
 		},
 		{
 			id: 1,
 			background: "1.png",
 			controls: {bottom: true},
-			directions: {bottom: 0}
-		}
+			directions: {bottom: 0},
+			items: []
+
+		},
+		{
+			id: 2,
+			background: "2.png",
+			controls: {top: false, right: true, bottom: false, left: true},
+			directions: {right: 4, left: 0},
+			items: []
+
+		},
+		{
+			id: 3,
+			background: "3.png",
+			controls: {top: false, right: true, bottom: false, left: true},
+			directions: {right: 0, left: 4},
+			items: []
+		},
+		{
+			id: 4,
+			background: "4.png",
+			controls: {top: false, right: true, bottom: false, left: true},
+			directions: {right: 3, left: 2},
+			items: [{ name:"mirror", x:100, y: 100, idRoom: 5}]
+		},
+		{
+			id: 5,
+			background: "5.png",
+			controls: {bottom: true},
+			directions: {bottom: 4},
+			items: []
+
+		},
 	]; // end of
 }

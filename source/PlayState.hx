@@ -6,6 +6,8 @@ import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxColor;
+using flixel.util.FlxSpriteUtil;
 import flixel.group.FlxGroup;
 import flixel.group.FlxTypedGroup;
 import flash.display.BitmapData;
@@ -13,7 +15,8 @@ import flash.geom.Matrix;
 import flixel.plugin.MouseEventManager;
 import flash.display.Bitmap;
 import flash.events.Event;
-
+import flash.events.MouseEvent;
+import flash.display.Sprite;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -25,9 +28,8 @@ class PlayState extends FlxState
 	 */
 
 	public var mainID:Int;
-	public var tf:FlxText;
 	public var scene:Scene;
-
+	public var tf:FlxText;
 
 
 	override public function create():Void
@@ -39,6 +41,14 @@ class PlayState extends FlxState
 		mainID = Reg.idView;
 		scene = new Scene(Reg.idView);
 		add(scene.view);
+
+		// mouse debug
+		tf = new FlxText();
+		tf.x = 15;
+		tf.y = 15;
+		tf.width = FlxG.width;
+		add(tf);
+
 		super.create();
 	}
 	
@@ -58,11 +68,11 @@ class PlayState extends FlxState
 	{
 
 		if (Reg.idView != mainID){
-			trace(Reg.idView);
 			scene.update(Reg.idView);
 			mainID = Reg.idView;
 		}
-
+		// show info location pointer mouse
+		tf.text = "mouseX = " + Math.floor(FlxG.mouse.x) + "\n" + "mouseY = " + Math.floor(FlxG.mouse.y);
 		super.update();
 	}	
 }
@@ -126,7 +136,6 @@ class Direction extends FlxSprite {
 
 	private function onDown(Sprite:FlxSprite){
 		Sprite.color = 0xffffffff;
-		trace(idRoom);
 		Reg.idView = idRoom;
 	}
 
@@ -156,6 +165,7 @@ class Scene {
 	public var sceneID:Dynamic;
 	public var background:FlxSprite;
 	public var dir:Int;
+	public var cursorEye:FlxSprite;
 
 
 	public function new(id:Int):Void {
@@ -170,6 +180,11 @@ class Scene {
 
 		// add controls
 		addControls();
+
+		// mouse cursor
+		cursorEye = new FlxSprite();
+		cursorEye.makeGraphic(15, 15, FlxColor.TRANSPARENT);
+		cursorEye.drawCircle();
 	}
 
 	public function update(idRoom:Int){
@@ -182,8 +197,42 @@ class Scene {
 		}
 		// add controls for the new view
 		addControls();
+
+		// add items
+		addItems();
+
+		// handle room events
+		if (idRoom==5){
+			Reg.room[0].background = "6.png";
+		}
 	}
 
+	private function addItems(){
+		if(sceneID.items.length > 0){
+			// var mirror = new FlxClickArea(308, 305, 18, 18, goMirror);
+			var item = new FlxSprite();
+			item.makeGraphic(18, 18);
+			item.x = 308;
+			item.y = 308;
+			// item.alpha = 0.005; Ask haxeflixel community
+			// Falta MouseEventManager.remove(this); per tant Item -> class
+			MouseEventManager.add(item, onMouseDown, null, onMouseOver, onMouseOut, false, true, true); 
+			view.add(item);
+		}
+	}
+
+	private function onMouseOver(Sprite:FlxSprite):Void{
+		// Load the sprite's graphic to the cursor
+		FlxG.mouse.load(cursorEye.pixels);
+	}
+
+	private function onMouseOut(Sprite:FlxSprite):Void {
+		FlxG.mouse.unload();
+	}
+
+	private function onMouseDown(Sprite:FlxSprite):Void{
+		Reg.idView = sceneID.items[0].idRoom;
+	}
 
 	private function addControls() {
 				// add directions controls
