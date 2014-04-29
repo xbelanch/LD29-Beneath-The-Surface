@@ -18,6 +18,8 @@ import flash.events.Event;
 import flash.events.MouseEvent;
 import flash.display.Sprite;
 
+import  flixel.addons.ui.FlxClickArea;
+
 /**
  * A FlxState which can be used for the actual gameplay.
  */
@@ -77,28 +79,7 @@ class PlayState extends FlxState
 	}	
 }
 
-class Item extends FlxSprite {
 
-	public var id:Int;
-	public var position:Dynamic; // x, y 
-
-	override public function new (id){ // we must add a callback if it have an interaction
-
-		super();
-		this.id = id;
-
-	} 
-
-}
-
-
-// Direction for controls 
-enum Dir {
-	Top;
-	Right;
-	Bottom;
-	Left;
-}
 
 // where we handle the movemement between views of the room
 class Direction extends FlxSprite {
@@ -112,17 +93,17 @@ class Direction extends FlxSprite {
 		this.makeGraphic(32, 32, 0xffff0000);
 
 		switch (Direction) {
-			case Dir.Top:
+			case Reg.Dir.Top:
 				this.x = Math.floor(FlxG.width / 2 - this.width/2); 
-			case Dir.Right: {
+			case Reg.Dir.Right: {
 				this.x = Math.floor(FlxG.width - this.width); 
 				this.y = Math.floor(FlxG.height/2  - this.height/2); 
 			}
-			case Dir.Bottom: {
+			case Reg.Dir.Bottom: {
 				this.x = Math.floor(FlxG.width / 2 - this.width/2); 
 				this.y = Math.floor(FlxG.height  - this.height); 
 			}
-			case Dir.Left: {
+			case Reg.Dir.Left: {
 				this.y = Math.floor(FlxG.height/2  - this.height/2);	
 			}
 		}
@@ -158,15 +139,71 @@ class Inventory {
 }
 
 
+
+class Item extends FlxSprite {
+
+	public var id:Int;
+	public var type:Reg.ItemType;
+	public var position:Dynamic;
+	public var area:Dynamic;
+	public var isPickeable:Bool; // if not only works for navigate
+	public var cursorEye:FlxSprite;
+	public var idView:Int;
+
+	override public function new (item:Dynamic){ // we must add a callback if it have an interaction
+
+		super();
+		this.id = item.id;
+		this.isPickeable = item.isPickeable; 
+		this.x = item.position.x;
+		this.y = item.position.y;
+		this.idView = item.idView;
+		makeGraphic(item.area.width, item.area.height);
+		this.color = 0xff0000ff;		
+
+		// mouse cursor shapes because its kind (moving, pickeable, sighting)
+		// next cursor is only a test
+		cursorEye = new FlxSprite();
+		cursorEye.makeGraphic(15, 15, FlxColor.TRANSPARENT);
+		cursorEye.drawCircle();
+
+		// handle mouse events
+		MouseEventManager.add(this, onMouseDown, null, onMouseOver, onMouseOut, false, true, true);
+	} 
+
+	override public function destroy(){
+		MouseEventManager.remove(this);
+	}
+
+	private function onMouseOver(Sprite:FlxSprite):Void{
+		// Load the sprite's graphic to the cursor
+		FlxG.mouse.load(cursorEye.pixels);
+	}
+
+	private function onMouseOut(Sprite:FlxSprite):Void {
+		// return original cursor
+		FlxG.mouse.unload();
+	}
+
+	private function onMouseDown(Sprite:FlxSprite):Void{
+		// it depends on kind of "object"
+		// for test purposes we test a simple moving to another view
+		FlxG.mouse.unload();
+		Reg.idView = this.idView;
+	}
+
+
+
+}
+
 // Scene contains a View background + n Items 
 class Scene {
 
 	public var view:FlxTypedGroup<FlxSprite>;
 	public var sceneID:Dynamic;
 	public var background:FlxSprite;
+	public var objects:FlxTypedGroup<FlxSprite>;
 	public var dir:Int;
-	public var cursorEye:FlxSprite;
-
 
 	public function new(id:Int):Void {
 
@@ -181,10 +218,6 @@ class Scene {
 		// add controls
 		addControls();
 
-		// mouse cursor
-		cursorEye = new FlxSprite();
-		cursorEye.makeGraphic(15, 15, FlxColor.TRANSPARENT);
-		cursorEye.drawCircle();
 	}
 
 	public function update(idRoom:Int){
@@ -198,61 +231,45 @@ class Scene {
 		// add controls for the new view
 		addControls();
 
-		// add items
+		// add items if the view has any of them
 		addItems();
-
-		// handle room events
+		// handle room events test
 		if (idRoom==5){
 			Reg.room[0].background = "6.png";
 		}
 	}
 
+	// add items 
 	private function addItems(){
-		if(sceneID.items.length > 0){
-			// var mirror = new FlxClickArea(308, 305, 18, 18, goMirror);
-			var item = new FlxSprite();
-			item.makeGraphic(18, 18);
-			item.x = 308;
-			item.y = 308;
-			// item.alpha = 0.005; Ask haxeflixel community
-			// Falta MouseEventManager.remove(this); per tant Item -> class
-			MouseEventManager.add(item, onMouseDown, null, onMouseOver, onMouseOut, false, true, true); 
-			view.add(item);
+
+		var objects:Array<Dynamic> = sceneID.items;
+		if(objects.length > 0){
+			for (object in objects){
+				var item:Item = new Item(object);
+				view.add(item);
+			}
 		}
-	}
-
-	private function onMouseOver(Sprite:FlxSprite):Void{
-		// Load the sprite's graphic to the cursor
-		FlxG.mouse.load(cursorEye.pixels);
-	}
-
-	private function onMouseOut(Sprite:FlxSprite):Void {
-		FlxG.mouse.unload();
-	}
-
-	private function onMouseDown(Sprite:FlxSprite):Void{
-		Reg.idView = sceneID.items[0].idRoom;
 	}
 
 	private function addControls() {
 				// add directions controls
 		if (sceneID.controls.top){
-			var top = new Direction(Dir.Top, sceneID.directions.top);
+			var top = new Direction(Reg.Dir.Top, sceneID.directions.top);
 			view.add(top);
 		}
 
 		if (sceneID.controls.right){
-			var right = new Direction(Dir.Right, sceneID.directions.right);
+			var right = new Direction(Reg.Dir.Right, sceneID.directions.right);
 			view.add(right);
 		}
 
 		if (sceneID.controls.bottom){
-			var bottom = new Direction(Dir.Bottom, sceneID.directions.bottom);
+			var bottom = new Direction(Reg.Dir.Bottom, sceneID.directions.bottom);
 			view.add(bottom);
 		}
 
 		if (sceneID.controls.left){
-			var left = new Direction(Dir.Left, sceneID.directions.left);
+			var left = new Direction(Reg.Dir.Left, sceneID.directions.left);
 			view.add(left);
 		}
 	}

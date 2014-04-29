@@ -3,7 +3,17 @@ package;
 import flixel.util.FlxSave;
 
 
+enum ItemType {
+	Mirror;
+}
 
+// Direction for controls 
+enum Dir {
+	Top;
+	Right;
+	Bottom;
+	Left;
+}
 
 /**
  * Handy, pre-built Registry class that can be used to store 
@@ -78,7 +88,7 @@ class Reg
 			background: "4.png",
 			controls: {top: false, right: true, bottom: false, left: true},
 			directions: {right: 3, left: 2},
-			items: [{ name:"mirror", x:100, y: 100, idRoom: 5}]
+			items: [{ id: 0, type:ItemType.Mirror, position: {x:310, y: 310}, area: {width: 15, height: 15}, idView: 5, isPickeable: false}]
 		},
 		{
 			id: 5,
