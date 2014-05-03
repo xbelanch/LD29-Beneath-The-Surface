@@ -2,7 +2,7 @@ package;
 
 import flixel.util.FlxSave;
 
-
+// Objects
 enum ItemType {
 	Mirror;
 }
@@ -13,6 +13,12 @@ enum Dir {
 	Right;
 	Bottom;
 	Left;
+}
+
+// Action
+enum ActionType {
+	GoTo;
+	See;
 }
 
 /**
@@ -57,7 +63,8 @@ class Reg
 			background: "0.png",
 			controls: {top: true, right: true, bottom: false, left: true},
 			directions: {top: 1, right: 2, left: 3},
-			items: []
+			items: [],
+			actions: [{id: 0, position: {x: 0, y: 0}, area: {width: 75, height: 75}, action: ActionType.See}]
 
 		},
 		{
@@ -65,7 +72,8 @@ class Reg
 			background: "1.png",
 			controls: {bottom: true},
 			directions: {bottom: 0},
-			items: []
+			items: [],
+			actions: []
 
 		},
 		{
@@ -73,7 +81,8 @@ class Reg
 			background: "2.png",
 			controls: {top: false, right: true, bottom: false, left: true},
 			directions: {right: 4, left: 0},
-			items: []
+			items: [],
+			actions: []
 
 		},
 		{
@@ -81,21 +90,24 @@ class Reg
 			background: "3.png",
 			controls: {top: false, right: true, bottom: false, left: true},
 			directions: {right: 0, left: 4},
-			items: []
+			items: [],
+			actions: []
 		},
 		{
 			id: 4,
 			background: "4.png",
 			controls: {top: false, right: true, bottom: false, left: true},
 			directions: {right: 3, left: 2},
-			items: [{ id: 0, type:ItemType.Mirror, position: {x:310, y: 310}, area: {width: 15, height: 15}, idView: 5, isPickeable: false}]
+			actions: [{ id: 0, position: {x:310, y: 310}, area: {width: 15, height: 15}, idView: 5}],
+			items: []
 		},
 		{
 			id: 5,
 			background: "5.png",
 			controls: {bottom: true},
 			directions: {bottom: 4},
-			items: []
+			items: [],
+			actions: []
 
 		},
 	]; // end of

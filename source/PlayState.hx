@@ -1,6 +1,7 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
@@ -15,6 +16,7 @@ import flash.geom.Matrix;
 import flixel.plugin.MouseEventManager;
 import flash.display.Bitmap;
 import flash.events.Event;
+import flash.events.EventDispatcher;
 import flash.events.MouseEvent;
 import flash.display.Sprite;
 
@@ -31,6 +33,7 @@ class PlayState extends FlxState
 
 	public var mainID:Int;
 	public var scene:Scene;
+	public var inventory:Inventory;
 	public var tf:FlxText;
 
 
@@ -42,8 +45,12 @@ class PlayState extends FlxState
 		// test
 		mainID = Reg.idView;
 		scene = new Scene(Reg.idView);
-		add(scene.view);
+		inventory = new Inventory();
 
+		add(scene.view);
+		add(scene.actions);
+		add(inventory);
+		
 		// mouse debug
 		tf = new FlxText();
 		tf.x = 15;
@@ -73,6 +80,9 @@ class PlayState extends FlxState
 			scene.update(Reg.idView);
 			mainID = Reg.idView;
 		}
+		// need to handle here actions like see or other things 
+		// scene.actions.update();
+
 		// show info location pointer mouse
 		tf.text = "mouseX = " + Math.floor(FlxG.mouse.x) + "\n" + "mouseY = " + Math.floor(FlxG.mouse.y);
 		super.update();
@@ -134,15 +144,71 @@ class Direction extends FlxSprite {
 
 }
 
-class Inventory {
+class Inventory extends FlxTypedGroup<FlxSprite> {
+
+	public var Items:Array<Item>;
+
+	override public function new(){
+		super();
+
+	} 
+
+	override public function update(){
+
+	}
 
 }
 
+
+class Action extends FlxSprite {
+
+	public var cursorEye:FlxSprite;
+
+	override public function new(action:Dynamic){
+		
+		super(action.position.x, action.position.y);
+		this.makeGraphic(action.area.width, action.area.height, FlxColor.RED);
+		// drawCircle();
+		MouseEventManager.add(this, onMouseDown, null, onMouseOver, onMouseOut, false, true, false);	
+
+		// mouse cursor shapes because its kind (moving, pickeable, sighting)
+		// next cursor is only a test
+		cursorEye = new FlxSprite();
+		cursorEye.makeGraphic(15, 15, FlxColor.TRANSPARENT);
+		cursorEye.drawCircle();
+	}
+
+	override public function destroy(){
+		MouseEventManager.remove(this);
+		cursorEye.destroy();
+	}
+
+
+	private function onMouseOver(Sprite:FlxSprite):Void{
+		// Load the sprite's graphic to the cursor
+		FlxG.mouse.load(cursorEye.pixels);
+	}
+
+	private function onMouseOut(Sprite:FlxSprite):Void {
+		// return original cursor
+		FlxG.mouse.unload();
+	}
+
+	private function onMouseDown(Sprite:FlxSprite):Void{
+		// it depends on kind of "object"
+		// for test purposes we test a simple moving to another view
+		trace("Check onMouseDown");
+
+	}
+
+}
 
 
 class Item extends FlxSprite {
 
 	public var id:Int;
+	public var graphic:FlxSprite;
+	public var action:FlxClickArea;
 	public var type:Reg.ItemType;
 	public var position:Dynamic;
 	public var area:Dynamic;
@@ -154,26 +220,31 @@ class Item extends FlxSprite {
 
 		super();
 		this.id = item.id;
-		this.isPickeable = item.isPickeable; 
+		// this.isPickeable = item.isPickeable; 
 		this.x = item.position.x;
 		this.y = item.position.y;
 		this.idView = item.idView;
-		makeGraphic(item.area.width, item.area.height);
-		this.color = 0xff0000ff;		
 
+
+		// add a "object" that player can pick up to and fit into inventory
+			
+		this.makeGraphic(item.area.width, item.area.height, FlxColor.TRANSPARENT);
+		// handle mouse events
+		MouseEventManager.add(this, onMouseDown, null, onMouseOver, onMouseOut, false, true, false);	
+		
 		// mouse cursor shapes because its kind (moving, pickeable, sighting)
 		// next cursor is only a test
 		cursorEye = new FlxSprite();
 		cursorEye.makeGraphic(15, 15, FlxColor.TRANSPARENT);
 		cursorEye.drawCircle();
 
-		// handle mouse events
-		MouseEventManager.add(this, onMouseDown, null, onMouseOver, onMouseOut, false, true, true);
+
 	} 
 
 	override public function destroy(){
 		MouseEventManager.remove(this);
 	}
+
 
 	private function onMouseOver(Sprite:FlxSprite):Void{
 		// Load the sprite's graphic to the cursor
@@ -199,16 +270,17 @@ class Item extends FlxSprite {
 // Scene contains a View background + n Items 
 class Scene {
 
-	public var view:FlxTypedGroup<FlxSprite>;
+	public var view:FlxTypedGroup<Dynamic>;
+	public var actions:FlxTypedGroup<Action>;
 	public var sceneID:Dynamic;
 	public var background:FlxSprite;
-	public var objects:FlxTypedGroup<FlxSprite>;
 	public var dir:Int;
 
 	public function new(id:Int):Void {
 
 		sceneID = Reg.room[id];
 		view = new FlxTypedGroup<FlxSprite>();
+		actions = new FlxTypedGroup<Action>();
 
 		// add background
 		background = new FlxSprite();
@@ -217,6 +289,9 @@ class Scene {
 
 		// add controls
 		addControls();
+
+		// add actions
+		addActions();
 
 	}
 
@@ -228,11 +303,18 @@ class Scene {
 		for (i in 1...view.members.length){
 			view.remove(view.members[i]);
 		}
+		for (i in 0...actions.members.length){
+			actions.remove(actions.members[i]);
+		}
 		// add controls for the new view
 		addControls();
 
 		// add items if the view has any of them
 		addItems();
+
+		// add actions :
+		addActions();
+
 		// handle room events test
 		if (idRoom==5){
 			Reg.room[0].background = "6.png";
@@ -247,6 +329,19 @@ class Scene {
 			for (object in objects){
 				var item:Item = new Item(object);
 				view.add(item);
+			}
+		}
+	}
+
+	// add actions
+	private function addActions(){
+
+		var _actions:Array<Dynamic> = sceneID.actions;
+		if(_actions.length > 0){
+			for (_action_ in _actions){
+				trace(_action_);
+				var a:Action = new Action(_action_);
+				actions.add(a);
 			}
 		}
 	}
