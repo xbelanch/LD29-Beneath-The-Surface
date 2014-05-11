@@ -1,15 +1,26 @@
 package;
 
 import flixel.FlxG;
+import flixel.FlxObject;
 import flixel.FlxSprite;
 import flixel.FlxState;
 import flixel.text.FlxText;
 import flixel.ui.FlxButton;
 import flixel.util.FlxMath;
+import flixel.util.FlxColor;
+using flixel.util.FlxSpriteUtil;
 import flixel.group.FlxGroup;
+import flixel.group.FlxTypedGroup;
 import flash.display.BitmapData;
 import flash.geom.Matrix;
 import flixel.plugin.MouseEventManager;
+import flash.display.Bitmap;
+import flash.events.Event;
+import flash.events.EventDispatcher;
+import flash.events.MouseEvent;
+import flash.display.Sprite;
+
+import  flixel.addons.ui.FlxClickArea;
 
 /**
  * A FlxState which can be used for the actual gameplay.
@@ -20,27 +31,44 @@ class PlayState extends FlxState
 	 * Function that is called up when to state is created to set it up. 
 	 */
 
-	public var view:View;
-	public var move:Bool;
+	public var mainID:Int;
+	public var scene:Scene;
+	public var inventory:Inventory;
 	public var tf:FlxText;
-	public var scene:FlxGroup;
 
-
+	// test
+	public var __dir:FlxSprite;
 
 	override public function create():Void
 	{
 
-		move = false;
-		view = new View(Reg.idView); // starts from zero 
-		add(view.background);
-		add(view.controls);
+		mainID = Reg.idView;
+		scene = new Scene(Reg.idView);
+		inventory = new Inventory();
 
+		add(scene.view);
+		add(scene.actions);
+		add(inventory);
+
+		////////////// test zone //////////////
+
+		// __dir = new FlxSprite();
+		// __dir.loadGraphic("assets/graphics/items/controls.png", false, 8, 15);
+		// __dir.loadGraphic("assets/graphics/items/tree.png");
+		// __dir.x = FlxG.width / 2;
+		// __dir.y = FlxG.height / 2;
+		// __dir.scale.set(10, 10);
+		// add(__dir);
+		
+		///////////////////////////////////////		 
+
+		////////////// mouse debug //////////////
 		tf = new FlxText();
 		tf.x = 15;
 		tf.y = 15;
 		tf.width = FlxG.width;
 		add(tf);
-	
+		/////////////////////////////////////////
 
 
 		super.create();
@@ -61,11 +89,16 @@ class PlayState extends FlxState
 	override public function update():Void
 	{
 
-		if (move){
-			// mainScene.destroy();
-			// mainScene  = new  Scene(Reg.idView);
-			trace("Dummy");
+		if (Reg.idView != mainID){
+			scene.update(Reg.idView);
+			mainID = Reg.idView;
 		}
+
+		// need to handle here actions like see or other things 
+		scene.actions.update();
+
+		// need to handle with animations 
+		// scene.animations.update();
 
 		// show info location pointer mouse
 		tf.text = "mouseX = " + Math.floor(FlxG.mouse.x) + "\n" + "mouseY = " + Math.floor(FlxG.mouse.y);
@@ -73,95 +106,8 @@ class PlayState extends FlxState
 	}	
 }
 
-class Item {
-
-	public var id:Int;
-	public var graphic:FlxSprite;
-	public var position:Dynamic; // x, y 
-
-	public function new (id:Int, position:Dynamic, graphicImg:String/*, ?CallBack:Void*/){ // we must add a callback if it have an interaction
-
-		this.id = id;
-		this.graphic = new FlxSprite(position.x, position.y);
-		this.graphic.loadGraphic("assets/items/" +  graphicImg);
-	} 
-
-	public function update():Void {
-
-	}
-
-}
-
-// where we handle the movemement between views of the room
-class Controls {
-
-
-}
-
-class Inventory {
-
-}
-
-class View {
-
-	public var id:Int;
-	public var movement:Dynamic; // {up, right, down, left}
-	public var controls:FlxGroup;
-	public var background:FlxSprite;
-	private var rightDirection:FlxSprite;
-	private var leftDirection:FlxSprite;
-
-	public function new (id:Int, ?movement:Dynamic):Void
-	{
-		this.id = id;
-		this.movement = movement;
-		this.controls = new FlxGroup();
-		this.background = new FlxSprite();
-		this.background.loadGraphic("assets/images/views/" + Std.int(id) + ".png"); 
-		
-		this.rightDirection = new FlxSprite();
-		rightDirection.makeGraphic(64, 640, 0xffefefef);
-		rightDirection.x = FlxG.width - 64;
-		controls.add(rightDirection);
-
-		this.leftDirection = new FlxSprite();
 
 
 
-		MouseEventManager.add(rightDirection, onDown, null, onOver, onOut); 
-		MouseEventManager.add(leftDirection, onDown, null, onOver, onOut); 
 
 
-	}
-
-	// paint everything: background + Controls   
-	public function update():Void {
-
-	}
-
-	// mouse callbacks
-	private function onDown(Sprite:FlxSprite){
-		Sprite.color = 0xffff0000;
-		id = 1;
-	}
-	
-	private function onOver(Sprite:FlxSprite){
-		Sprite.alpha = 0.5;
-	}
-
-	private function onOut(Sprite:FlxSprite){
-		Sprite.alpha = 0.3;
-	}
-}
-
-// Scene contains a View background + n Items 
-class Scene extends FlxGroup {
-
-	public var id:Int;
-
-	public function new(id:Int):Void {
-
-		this.id = id;
-		super();
-	}
-}
