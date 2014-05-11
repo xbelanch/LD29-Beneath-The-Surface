@@ -2,11 +2,6 @@ package;
 
 import flixel.util.FlxSave;
 
-// Objects
-enum ItemType {
-	Mirror;
-}
-
 // Direction for controls 
 enum Dir {
 	Top;
@@ -57,7 +52,7 @@ class Reg
 	public static var saves:Array<FlxSave> = [];
 
 
-	public static var room:Array<Dynamic> = [
+	public static var view:Array<Dynamic> = [
 		{
 			id: 0,
 			background: "0.png",
