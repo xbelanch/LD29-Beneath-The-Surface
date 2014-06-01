@@ -10,48 +10,58 @@ import flixel.group.FlxTypedGroup;
 // Scene contains a View background + n Items 
 class Scene {
 
-	public var view:FlxTypedGroup<Dynamic>;
-	public var actions:FlxTypedGroup<Action>;
 	public var sceneID:Dynamic;
 	public var background:FlxSprite;
-	public var dir:Int;
+	public var controls:Array<Control>; // basic movement between scenes (up, right, down, left)
+	public var items:Array<Item>; //
+	public var actions:Array<Action>;
 
 	public function new(id:Int):Void {
 
 		sceneID = Reg.view[id];
-		view = new FlxTypedGroup<FlxSprite>();
-		actions = new FlxTypedGroup<Action>();
+		background = new FlxSprite();
+		controls = new Array<Control>();
+		items  = new Array<Item>();
+		actions = new Array<Action>();
 
 		// add background
-		background = new FlxSprite();
-		background.loadGraphic("assets/graphics/views/" + sceneID.background); 
-		view.add(background);
+		// background.loadGraphic("assets/graphics/views/" + sceneID.background); 
+		// view.add(background);
 
 		// add controls
-		addControls();
+		// addControls();
 
 		// add actions
-		addActions();
+		// addActions();
 
 	}
 
-	public function update(idRoom:Int){
-		sceneID = Reg.view[idRoom];
-		background.loadGraphic("assets/graphics/views/" + sceneID.background);
+	public function destroy(){
+		background.destroy();
+		for (item in items){
+			item.destroy();
+		}
+	}
+
+	public function addBackground(){
+		background.loadGraphic("assets/graphics/backgrounds/" + sceneID.background);
+		Reg.PS.add(background); 
 		
+	}
 
-		// remove elements
-		// you must handle the 0 element 
-		for (i in 1...view.members.length){
-			view.members[i].destroy();
+	// add items to playstate
+	public function addItems(){
+		for (item in items){
+			Reg.PS.add(item);
 		}
-		for (i in 0...actions.members.length){
-			// actions.remove(actions.members[i]);
-			actions.members[i].destroy();
-		}
+	}
 
+	public function update(idRoom:Int){
+		
+		sceneID = Reg.view[idRoom];
+		addBackground();
 		// add controls for the new view
-		addControls();
+		// addControls();
 
 		// add items if the view has any of them
 		addItems();
@@ -66,16 +76,16 @@ class Scene {
 	}
 
 	// add items 
-	private function addItems(){
+	// private function addItems(){
 
-		var objects:Array<Dynamic> = sceneID.items;
-		if(objects.length > 0){
-			for (object in objects){
-				var item:Item = new Item(object);
-				view.add(item);
-			}
-		}
-	}
+	// 	var objects:Array<Dynamic> = sceneID.items;
+	// 	if(objects.length > 0){
+	// 		for (object in objects){
+	// 			var item:Item = new Item(object);
+	// 			items.push(item);
+	// 		}
+	// 	}
+	// }
 
 	// add actions
 	private function addActions(){
@@ -85,33 +95,33 @@ class Scene {
 			for (_action_ in _actions){
 				trace(_action_);
 				var a:Action = new Action(_action_);
-				actions.add(a);
+				actions.push(a);
 			}
 		}
 	}
 
-	private function addControls() {
-				// add directions controls
-		if (sceneID.controls.top){
-			var top = new Direction(Reg.Dir.Top, sceneID.directions.top);
-			view.add(top);
-		}
+	// private function addControls() {
+	// 			// add directions controls
+	// 	if (sceneID.controls.top){
+	// 		var top = new Direction(Reg.Dir.Top, sceneID.directions.top);
+	// 		view.add(top);
+	// 	}
 
-		if (sceneID.controls.right){
-			var right = new Direction(Reg.Dir.Right, sceneID.directions.right);
-			view.add(right);
-		}
+	// 	if (sceneID.controls.right){
+	// 		var right = new Direction(Reg.Dir.Right, sceneID.directions.right);
+	// 		view.add(right);
+	// 	}
 
-		if (sceneID.controls.bottom){
-			var bottom = new Direction(Reg.Dir.Bottom, sceneID.directions.bottom);
-			view.add(bottom);
-		}
+	// 	if (sceneID.controls.bottom){
+	// 		var bottom = new Direction(Reg.Dir.Bottom, sceneID.directions.bottom);
+	// 		view.add(bottom);
+	// 	}
 
-		if (sceneID.controls.left){
-			var left = new Direction(Reg.Dir.Left, sceneID.directions.left);
-			view.add(left);
-		}
-	}
+	// 	if (sceneID.controls.left){
+	// 		var left = new Direction(Reg.Dir.Left, sceneID.directions.left);
+	// 		view.add(left);
+	// 	}
+	// }
 
 }
 

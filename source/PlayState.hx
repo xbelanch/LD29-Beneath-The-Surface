@@ -35,19 +35,24 @@ class PlayState extends FlxState
 	public var scene:Scene;
 	public var inventory:Inventory;
 	public var tf:FlxText;
-
-	// test
-	public var __dir:FlxSprite;
+	public var control:Control;
 
 	override public function create():Void
 	{
 
+		Reg.PS = this;
 		mainID = Reg.idView;
 		scene = new Scene(Reg.idView);
 		inventory = new Inventory();
 
-		add(scene.view);
-		add(scene.actions);
+		// add(scene.view);
+		scene.addBackground();
+		// add controls -- test
+		control = new Control(Top);
+		add(control);
+		scene.addItems();
+		// add(scene.items);
+		// add(scene.actions);
 		add(inventory);
 
 		////////////// test zone //////////////
@@ -88,14 +93,16 @@ class PlayState extends FlxState
 	 */
 	override public function update():Void
 	{
+		 control.update();
 
 		if (Reg.idView != mainID){
+			scene.destroy();
 			scene.update(Reg.idView);
 			mainID = Reg.idView;
 		}
 
 		// need to handle here actions like see or other things 
-		scene.actions.update();
+		// scene.actions.update();
 
 		// need to handle with animations 
 		// scene.animations.update();
