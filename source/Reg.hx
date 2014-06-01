@@ -10,10 +10,9 @@ enum Dir {
 	Left;
 }
 
-// Action
-enum ActionType {
-	GoTo;
-	See;
+
+enum ItemKind {
+	Mirror;
 }
 
 /**
@@ -23,6 +22,9 @@ enum ActionType {
  */
 class Reg
 {
+
+	// a reference to the active playstate 
+	static public var PS:PlayState; 
 
 	public static var idView:Int = 0;
 	/**
@@ -58,52 +60,58 @@ class Reg
 			background: "0.png",
 			controls: {top: true, right: true, bottom: false, left: true},
 			directions: {top: 1, right: 2, left: 3},
-			items: [],
-			actions: [{id: 0, position: {x: 0, y: 0}, area: {width: 75, height: 75}, action: ActionType.See}]
+			items: [
+				{ 
+					id: 0,
+					kind: Mirror, 
 
-		},
-		{
-			id: 1,
-			background: "1.png",
-			controls: {bottom: true},
-			directions: {bottom: 0},
-			items: [],
-			actions: []
 
-		},
-		{
-			id: 2,
-			background: "2.png",
-			controls: {top: false, right: true, bottom: false, left: true},
-			directions: {right: 4, left: 0},
-			items: [],
-			actions: []
+				}
 
+			]
 		},
-		{
-			id: 3,
-			background: "3.png",
-			controls: {top: false, right: true, bottom: false, left: true},
-			directions: {right: 0, left: 4},
-			items: [],
-			actions: []
-		},
-		{
-			id: 4,
-			background: "4.png",
-			controls: {top: false, right: true, bottom: false, left: true},
-			directions: {right: 3, left: 2},
-			actions: [{ id: 0, position: {x:310, y: 310}, area: {width: 15, height: 15}, idView: 5}],
-			items: []
-		},
-		{
-			id: 5,
-			background: "5.png",
-			controls: {bottom: true},
-			directions: {bottom: 4},
-			items: [],
-			actions: []
+		// {
+		// 	id: 1,
+		// 	background: "1.png",
+		// 	controls: {bottom: true},
+		// 	directions: {bottom: 0},
+		// 	items: [],
+		// 	actions: []
 
-		},
+		// },
+		// {
+		// 	id: 2,
+		// 	background: "2.png",
+		// 	controls: {top: false, right: true, bottom: false, left: true},
+		// 	directions: {right: 4, left: 0},
+		// 	items: [],
+		// 	actions: []
+
+		// },
+		// {
+		// 	id: 3,
+		// 	background: "3.png",
+		// 	controls: {top: false, right: true, bottom: false, left: true},
+		// 	directions: {right: 0, left: 4},
+		// 	items: [],
+		// 	actions: []
+		// },
+		// {
+		// 	id: 4,
+		// 	background: "4.png",
+		// 	controls: {top: false, right: true, bottom: false, left: true},
+		// 	directions: {right: 3, left: 2},
+		// 	actions: [{ id: 0, position: {x:310, y: 310}, area: {width: 15, height: 15}, idView: 5}],
+		// 	items: []
+		// },
+		// {
+		// 	id: 5,
+		// 	background: "5.png",
+		// 	controls: {bottom: true},
+		// 	directions: {bottom: 4},
+		// 	items: [],
+		// 	actions: []
+
+		// },
 	]; // end of
 }

@@ -4,18 +4,17 @@ import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.util.FlxColor;
 import flixel.plugin.MouseEventManager;
-
-
-enum ItemKind {
-	Mirror;
-}
+import flixel.util.FlxSpriteUtil;
 
 
 class Item extends FlxSprite {
 
 	public var id:Int;
-	public var kind:ItemKind;
+	public var kind:Reg.ItemKind;
+	public var isPickable:Bool; // if is not pickable is transparent
+	// we define with pink colour items that are acting like actions ;)
 	public var cursorEye:FlxSprite;
+
 
 	override public function new (item:Dynamic){ // we must add a callback if it have an interaction
 
@@ -40,9 +39,8 @@ class Item extends FlxSprite {
 		// mouse cursor shapes because its kind (moving, pickeable, sighting)
 		// next cursor is only a test
 		cursorEye = new FlxSprite();
-		// cursorEye.makeGraphic(15, 15, FlxColor.TRANSPARENT);
-		// cursorEye.drawCircle();
-
+		cursorEye.makeGraphic(15, 15, FlxColor.TRANSPARENT);
+		FlxSpriteUtil.drawCircle(cursorEye);
 
 	} 
 
