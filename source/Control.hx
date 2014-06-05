@@ -5,6 +5,8 @@ package;
 import flixel.FlxG;
 import flixel.FlxSprite;
 import flixel.ui.FlxButton;
+import flixel.util.FlxColor;
+using flixel.util.FlxSpriteUtil;
 
 class Control extends FlxButton {
 
@@ -16,23 +18,16 @@ class Control extends FlxButton {
 		left:  {id: 3 }  
 	}
 	
+
 	override public function new(dir:Reg.Dir, ?view:Dynamic) {
 
 		switch (dir) {
 			case Top:
 				{
-					super(FlxG.width*0.5, 15, "", onClick);
-					// var arrow:FlxSprite = new FlxSprite();
-					// arrow.loadGraphic("assets/graphics/controls/top.png");
-					this.loadGraphic("assets/graphics/controls/topB.png");
-					// this.loadGraphicFromSprite(arrow);
-
-					// this.scale.set(6, 6); //?
-					this.color = 0xffff0000;
-					// this.width = arrow.width * 6;
-					// this.height = arrow.height * 6;
-					// arrow.origin.x = this.origin.x;
-					// arrow.origin.y = this.origin.y;
+					super(0, 0, "", onClick);
+					this.makeGraphic(FlxG.width, 45, 0xff000000);
+					this.drawCircle(20, 20, 19, 0xffff0000);
+					this.alpha = 0;
 
 				}
 			case Right:
@@ -51,7 +46,7 @@ class Control extends FlxButton {
 		}
 
 	}
-
+	∫
 	override public function update(){
 		
 		super.update();
@@ -60,15 +55,9 @@ class Control extends FlxButton {
 
 		switch (status) {
 			case FlxButton.HIGHLIGHT:
-				color = 0xffffff00;
-				// scale.set(6,6);
+				this.alpha = 0.65;
 			case FlxButton.NORMAL:
-				color = 0xff3f3f3f;
-				// scale.set(6,6);
-
-			case FlxButton.PRESSED:
-				color = 0xffff0000;
-				scale.set(8, 8);
+				this.alpha = 0;
 		}
 
 	}
