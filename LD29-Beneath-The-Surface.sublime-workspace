@@ -1,0 +1,1025 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"lo",
+				"loadGraphicFromSprite(...)	flixel.FlxSprite"
+			],
+			[
+				"or",
+				"origin	flixel.util.FlxPoint"
+			],
+			[
+				"dra",
+				"drawDebug()	Void"
+			],
+			[
+				"s",
+				"status	Int"
+			],
+			[
+				"c",
+				"color	Int"
+			],
+			[
+				"w",
+				"width	Int"
+			],
+			[
+				"Flx",
+				"FlxSprite	class"
+			],
+			[
+				"con",
+				"controls"
+			],
+			[
+				"F",
+				"FlxButton	class"
+			],
+			[
+				"FlxS",
+				"FlxSpriteUtil	class"
+			],
+			[
+				"u",
+				"util	package"
+			],
+			[
+				"FlxG",
+				"FlxG	flixel"
+			],
+			[
+				"test",
+				"testSnow	var"
+			],
+			[
+				"Fl",
+				"FlxSprite	class"
+			],
+			[
+				"Ite",
+				"ItemKind	class"
+			],
+			[
+				"Item",
+				"ItemKind	Item"
+			],
+			[
+				"In",
+				"Inventory	class"
+			],
+			[
+				"I",
+				"Inventory	class"
+			],
+			[
+				"FlxC",
+				"FlxColor	flixel.util"
+			],
+			[
+				"It",
+				"Item	class"
+			],
+			[
+				"ADDED",
+				"ADDED_TO_STAGE	String"
+			],
+			[
+				"add",
+				"addActions	function"
+			],
+			[
+				"ac",
+				"actions	var"
+			],
+			[
+				"Ac",
+				"ActionType	class"
+			],
+			[
+				"onM",
+				"onMouseDown	function"
+			],
+			[
+				"is",
+				"isPickeable	Bool"
+			],
+			[
+				"sc",
+				"sceneID	var"
+			],
+			[
+				"id",
+				"idRoom"
+			],
+			[
+				"posi",
+				"position	var"
+			],
+			[
+				"S",
+				"Sprite	var"
+			],
+			[
+				"al",
+				"alpha	Float"
+			],
+			[
+				"v",
+				"view	var"
+			],
+			[
+				"Mos",
+				"MouseEvent	flash.events"
+			],
+			[
+				"M",
+				"MouseEvent	class"
+			],
+			[
+				"scene",
+				"sceneID	var"
+			],
+			[
+				"main",
+				"mainID	var"
+			],
+			[
+				"Mouse",
+				"MouseEventManager	flixel.plugin"
+			],
+			[
+				"Dir",
+				"Direction	var"
+			],
+			[
+				"up",
+				"upControl	var"
+			],
+			[
+				"gra",
+				"graphic	var"
+			],
+			[
+				"l",
+				"loadGraphic(...)	flixel.FlxSprite"
+			],
+			[
+				"St",
+				"Std	class"
+			],
+			[
+				"find",
+				"findTarget"
+			],
+			[
+				"cell",
+				"cellsAvailable	function"
+			],
+			[
+				"D",
+				"Dynamic<T>	class"
+			],
+			[
+				"merg",
+				"mergedFrom"
+			],
+			[
+				"re",
+				"reverse"
+			],
+			[
+				"tra",
+				"traversals	var"
+			],
+			[
+				"cel",
+				"cellContent"
+			],
+			[
+				"ce",
+				"cell"
+			],
+			[
+				"FlxT",
+				"FlxTypedGroup	flixel.group"
+			],
+			[
+				"FlxTyped",
+				"FlxTypedGroup	flixel.group"
+			],
+			[
+				"grid",
+				"gridDisplay	var"
+			],
+			[
+				"me",
+				"mergedFrom"
+			],
+			[
+				"pre",
+				"previousPosition"
+			],
+			[
+				"metada",
+				"metadata	var"
+			],
+			[
+				"Game",
+				"GameStates"
+			],
+			[
+				"out",
+				"outputBMP"
+			],
+			[
+				"Bi",
+				"BitmapData"
+			],
+			[
+				"Bit",
+				"BitmapData"
+			],
+			[
+				"cur",
+				"currentRoom"
+			],
+			[
+				"o",
+				"output"
+			],
+			[
+				"ou",
+				"outputBMP"
+			],
+			[
+				"save",
+				"saveData	var"
+			],
+			[
+				"i",
+				"inventory"
+			],
+			[
+				"prop",
+				"props	var"
+			],
+			[
+				"sa",
+				"saveData	var"
+			],
+			[
+				"dr",
+				"drawText	function"
+			],
+			[
+				"Tex",
+				"TextField	flash.text"
+			],
+			[
+				"Te",
+				"TextField	class"
+			],
+			[
+				"B",
+				"BitmapData	class"
+			],
+			[
+				"e",
+				"events	package"
+			],
+			[
+				"draw",
+				"drawRect(...)	Void"
+			],
+			[
+				"Str",
+				"StringTools	class"
+			],
+			[
+				"scale",
+				"scaleY	Float"
+			],
+			[
+				"PL",
+				"PLAN_PANELS	Unknown<5>"
+			],
+			[
+				"BIT",
+				"BITMAPDATA	Common"
+			],
+			[
+				"BI",
+				"BITMAPDATA	Common"
+			],
+			[
+				"of",
+				"offset	var"
+			],
+			[
+				"GAME",
+				"GAMEHEIGHT	Unknown<0>"
+			],
+			[
+				"co",
+				"copyPixels(...)	Void"
+			],
+			[
+				"p",
+				"pixelfilter	var"
+			],
+			[
+				"sca",
+				"scaleX	Float"
+			],
+			[
+				"ad",
+				"addChild(...)	flash.display.DisplayObject"
+			],
+			[
+				"room",
+				"roomBMP	var"
+			],
+			[
+				"d",
+				"draw(...)	Void"
+			],
+			[
+				"BITM",
+				"BITMAP	Common"
+			],
+			[
+				"GA",
+				"GAMEHEIGHT	Unknown<0>"
+			],
+			[
+				"T",
+				"TextFormatAlign"
+			],
+			[
+				"t",
+				"TextField	class"
+			],
+			[
+				"Press",
+				"PressStart2PFont	class"
+			],
+			[
+				"L",
+				"LSHEIGHT	Unknown<1>"
+			],
+			[
+				"Pa",
+				"PathPNG	class"
+			],
+			[
+				"ma",
+				"makePath	function"
+			],
+			[
+				"BITMAPD",
+				"BITMAPDATA	Common"
+			],
+			[
+				"FO",
+				"FooPNG	class"
+			],
+			[
+				"Fo",
+				"FooPNG	class"
+			],
+			[
+				"a",
+				"addChild(...)	flash.display.DisplayObject"
+			],
+			[
+				"se",
+				"setPixel32(...)	Void"
+			],
+			[
+				"bit",
+				"bitmapdata	var"
+			],
+			[
+				"scre",
+				"screenWidth	var"
+			],
+			[
+				"scree",
+				"screenHeight	var"
+			],
+			[
+				"rece",
+				"recenterY	var"
+			],
+			[
+				"rec",
+				"recenterY	var"
+			],
+			[
+				"screen",
+				"screenHeight	var"
+			],
+			[
+				"get",
+				"getReflectionColor"
+			],
+			[
+				"trac",
+				"traceRay"
+			],
+			[
+				"li",
+				"light"
+			],
+			[
+				"int",
+				"intersections(...)	Unknown<2>"
+			],
+			[
+				"C",
+				"Checkerboard	class"
+			],
+			[
+				"b",
+				"black	Unknown<1>"
+			],
+			[
+				"gr",
+				"graphics"
+			],
+			[
+				"_",
+				"_starfield	var"
+			],
+			[
+				"FLx",
+				"FlxSprite	org.flixel"
+			],
+			[
+				"GRID",
+				"GRID_HEIGHT"
+			],
+			[
+				"WI",
+				"GRID_WIDTH"
+			],
+			[
+				"HE",
+				"GRID_HEIGHT"
+			],
+			[
+				"COLOR_",
+				"COLOR_WHITE"
+			],
+			[
+				"Bea",
+				"BeadBorderColor"
+			],
+			[
+				"Bead",
+				"BeadBorderWidth"
+			],
+			[
+				"Bear",
+				"BeadBorderWidth"
+			],
+			[
+				"Pla",
+				"PLAYER"
+			],
+			[
+				"COLOR_B",
+				"COLOR_BLUE"
+			],
+			[
+				"Audio",
+				"AudioStop"
+			],
+			[
+				"Audi",
+				"AudioPlay"
+			],
+			[
+				"AU",
+				"AudioStop"
+			],
+			[
+				"ARR",
+				"ARROW_LEFT"
+			],
+			[
+				"COLO",
+				"COLOR_BLACK"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "Packages/MarkdownBuild/Markdown.sublime-build",
+	"command_palette":
+	{
+		"height": 87.0,
+		"selected_items":
+		[
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"pac",
+				"Package Control: List Packages"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"less",
+				"Set Syntax: LESS"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 146.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/source/Item.hx",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/source/Reg.hx",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/source/Scene.hx",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/source/PlayState.hx",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/source/Action.hx",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/source/Control.hx",
+		"/usr/lib/haxe/lib/flixel/3,3,1/flixel/FlxSprite.hx",
+		"/Users/xbelanch/Desktop/2048/source/Reg.hx",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/source/Inventory.hx",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/Project.xml",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/source/AssetPaths.hx",
+		"/Users/xbelanch/Desktop/template.tex",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/source/Main.hx",
+		"/Users/xbelanch/Desktop/LD29-Beneath-The-Surface/README.md",
+		"/Users/xbelanch/Desktop/2048/source/GameClass.hx",
+		"/Users/xbelanch/Desktop/2048.c",
+		"/Users/xbelanch/Desktop/2048/Project.xml",
+		"/Users/xbelanch/Desktop/2048/source/LocalStorageManager.hx",
+		"/Users/xbelanch/Desktop/2048/source/MenuState.hx",
+		"/Users/xbelanch/Desktop/2048/source/Button.hx",
+		"/Users/xbelanch/Desktop/2048/source/Tile.hx",
+		"/Users/xbelanch/Desktop/2048/source/Actuate.hx",
+		"/Users/xbelanch/Desktop/2048/README.md",
+		"/Users/xbelanch/Desktop/2048/.gitignore",
+		"/Users/xbelanch/Desktop/2048/LICENSE",
+		"/Users/xbelanch/Downloads/Glossari Demandes socials als centres educatius.xml",
+		"/Users/xbelanch/Dropbox/BunkerGames/EscapeRoom/Source/Color.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/EscapeRoom/Source/Const.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/EscapeRoom/Source/Item.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/EscapeRoom/Source/Room.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/EscapeRoom/Source/World.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/EscapeRoom/Source/Player.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/EscapeRoom/project.xml",
+		"/Users/xbelanch/.ssh/known_hosts",
+		"/Users/xbelanch/Dropbox/BunkerGames/EscapeRoom/Source/DepthManager.hx",
+		"/Users/xbelanch/Desktop/proletarian ninja /source/ludumdare27-2.hxml",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Lib/PixelFilter.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Lib/Panel.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Source/Hero.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Lib/Timer.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Source/Entity.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Source/Common.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Source/Entities.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Lib/DepthManager.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Lib/Key.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/Source/Main.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/LudumDare27/README.md",
+		"/Users/xbelanch/Dropbox/BunkerGames/BuddhaMark2/project.xml",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracer/Source/Main.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracer/project.xml",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracer/Source/Raytracer.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Surfaces.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Main.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Color.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Light.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Scene.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Common.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/project.xml",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Raytracing.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Camera.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Plane.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Vector.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Sphere.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/README.md",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Intersection.hx",
+		"/Users/xbelanch/Dropbox/BunkerGames/Raytracing/Source/Ray.hx",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkergam.es/_layouts/default-jquery-tools.html",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkergam.es/_posts/2013-07-14-platformer1.markdown",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkergam.es/_layouts/post.html",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkergam.es/games/platform0-2/platform.markdown",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkergam.es/_layouts/default.html",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkergam.es/_posts/2013-07-21-resources0.markdown",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkergam.es/_posts/2013-07-11-platformer0.markdown",
+		"/Users/xbelanch/Dropbox/BunkerGames/RogueLike/export/html5/bin/index.html",
+		"/Users/xbelanch/Desktop/roguelikeAttempt2013/src/GameManager.hx",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkergam.es/css/syntax.css",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkergam.es/jsgames/rogue0/RogueLike.js",
+		"/Users/xbelanch/Desktop/roguelikeAttempt2013/src/Enemy.hx",
+		"/Users/xbelanch/Desktop/HaxeDungeons-master/src/dungeons/mapgen/Dungeon.hx",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkernot.es/_posts/2013-07-09-static-site-generators.markdown",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkernot.es/404.html",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkernot.es/_config.yml",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkernot.es/s3_website.yml",
+		"/Users/xbelanch/Dropbox/BunkerSites/bunkernot.es/index.html",
+		"/Users/xbelanch/Dropbox/mini_ops/site/who.html",
+		"/Users/xbelanch/Desktop/HaxeDungeons-master/project.xml",
+		"/Users/xbelanch/Dropbox/mini_ops/gestio/edicio_reunio1_0713.md",
+		"/Users/xbelanch/Desktop/roguelikeAttempt2013/src/CoverBMP.hx",
+		"/Users/xbelanch/Desktop/roguelikeAttempt2013/src/Hero.hx",
+		"/Users/xbelanch/Desktop/roguelikeAttempt2013/src/TileSheetsGrid.hx",
+		"/Users/xbelanch/Dropbox/mini_ops/site/4/index.html",
+		"/Users/xbelanch/Dropbox/mini_ops/site/6/index.html",
+		"/Users/xbelanch/Dropbox/mini_ops/site/7/index.html",
+		"/Users/xbelanch/Desktop/roguelikeAttempt2013/src/FeedBackDisplay.hx",
+		"/Users/xbelanch/Desktop/roguelikeAttempt2013/src/SartScreen.hx",
+		"/Users/xbelanch/Desktop/roguelikeAttempt2013/src/Main.hx",
+		"/Users/xbelanch/Desktop/roguelikeAttempt2013/application.nmml",
+		"/Users/xbelanch/Dropbox/mini_ops/site/5/index.html",
+		"/Users/xbelanch/Desktop/HaxeFlixelDemoes/robotmeditation/Source/ld26/NewProject.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelDemoes/robotmeditation/Source/com/ludamix/runtime/blitter/Blitter.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelDemoes/robotmeditation/New Project.nmml",
+		"/Users/xbelanch/Desktop/HaxeFlixelDemoes/robotmeditation/Source/com/ludamix/runtime/blitter/BlitterScene.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/Source/Player.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/Source/MenuState.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/Source/StarField.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/Source/Main.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/Source/PlayState.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/Source/MyPreloader.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/Source/StarField_old.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/A-Silent-Story.nmml",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/MyPreloader.hx",
+		"/Users/xbelanch/Desktop/HaxeFlixelLearning/A-Silent-Story/Export/html5/haxe/ApplicationMain.hx",
+		"/Users/xbelanch/Dropbox/Public/LD48/index.html",
+		"/Users/xbelanch/Desktop/LD26/rain/rain.js",
+		"/Users/xbelanch/Desktop/LD26/conway/conway.js",
+		"/Users/xbelanch/Desktop/LD26/whither/whither.js",
+		"/Users/xbelanch/Desktop/LD26/PS2/game.js",
+		"/Users/xbelanch/Desktop/LD26/Perlenspiel Creations/Toy Weave/game.js",
+		"/Users/xbelanch/Desktop/LD26/Perlenspiel Creations/Puzzle ColorWheel/game.js",
+		"/Users/xbelanch/Desktop/LD26/Perlenspiel Creations/Game Dungeon Escape/game.js",
+		"/Users/xbelanch/Desktop/LD26/minimalism/index.html",
+		"/Users/xbelanch/Desktop/LD26/minimalism/game.js",
+		"/Users/xbelanch/Desktop/LD26/minimalism/ps2.3.js",
+		"/Users/xbelanch/Desktop/LD26/minimalism/test.js",
+		"/Users/xbelanch/Desktop/LD26/minimalism/test2.js",
+		"/Users/xbelanch/Desktop/LD26/splash/splash.js",
+		"/Users/xbelanch/Desktop/LD26/PS2/game.html",
+		"/Users/xbelanch/Desktop/HaxeFlixelDemoes/ModeDemo/source/PlayState.hx"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+			"<open folders>",
+			"/Users/xbelanch/Desktop/LD26/minimalism/game.js",
+			"game.js",
+			"",
+			"*",
+			""
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"loadGraphicFromSprite",
+			"origin",
+			"width",
+			"setBufferedInput",
+			"addRandomTil",
+			"addRandomTile",
+			"insert",
+			"randomAvailableCell",
+			"cellsAvailable",
+			"addRandom",
+			"findFarthestPosition",
+			"movesAvailable",
+			"prepareTiles",
+			"cellContent",
+			"flag: 4",
+			"cellCon",
+			"prep",
+			"prepare",
+			"cellContent",
+			"cellAvailable",
+			"withinBounds",
+			"this.cells[x][y.value == 8])\n						",
+			"Colorcode",
+			"playing",
+			"getChest",
+			"Popu",
+			"pop",
+			"Chests",
+			"popup",
+			"Chest",
+			"chest",
+			"ches",
+			"Chests",
+			"mp3",
+			"id",
+			"music",
+			"Sound",
+			"play",
+			"wav",
+			"mp3",
+			"Sounds",
+			"sounds",
+			"Sounds",
+			"sound",
+			"remove",
+			"shake",
+			"shake\nshake",
+			"shake",
+			"collide",
+			"Direction",
+			"drawTile",
+			"ty",
+			"tx",
+			" \n",
+			"0xff941100",
+			"zoom",
+			"trace",
+			"trace(",
+			"trace",
+			"static",
+			"PlayerMovement",
+			"DisplayObjectContainer",
+			"put your id s3 code here",
+			"Crowd",
+			"*",
+			"Hero",
+			"KEY_D",
+			"scene",
+			"ini",
+			"scene",
+			"ini",
+			"scene",
+			"StageAlign",
+			"yesnoStart",
+			"Full",
+			"bitmap",
+			"bitmapdata",
+			"addChild",
+			"add",
+			"Graphic",
+			"ç",
+			"graphics",
+			"add",
+			"drawLogo",
+			"grap",
+			"graph",
+			"grap",
+			"_text",
+			" _text",
+			"explosion.wav",
+			"\n		",
+			"ROOM.ite",
+			"firstime",
+			"StatusFadeDown",
+			"BOTTOM_ROW",
+			"BLOOD",
+			"Blood",
+			"BuildHUD",
+			"BuildLevel",
+			"BeadData",
+			"LESS",
+			"MINIMALISM",
+			"PrintInstructions",
+			"Square",
+			"fac",
+			"facing",
+			"background",
+			"background+",
+			"_player",
+			"_plyer",
+			"PlaySt",
+			"PlayState",
+			"fade",
+			"onFade",
+			"PlayState",
+			"acceleration",
+			"justTouched",
+			"fillTileMapRectWithRandomTiles",
+			"hurt",
+			"start",
+			"sta",
+			"fade",
+			"button",
+			"butt",
+			"play",
+			"onFade",
+			"gibs",
+			"FlxAss"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"TITLE",
+			"GAME",
+			"MINIMALISM",
+			"0\n\n\n\n0",
+			"1",
+			"![\\3][\"\\1\"]",
+			"--\\1--\\3--",
+			"--\\1--\\2--",
+			"\\1",
+			".jpg",
+			".jpeg"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 30.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 118.0
+	},
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"reg",
+				"LD29-Beneath-The-Surface/source/Reg.hx"
+			],
+			[
+				"tile",
+				"source/Tile.hx"
+			],
+			[
+				"po",
+				"src/Popup.hx"
+			],
+			[
+				"en",
+				"src/Entity.hx"
+			],
+			[
+				"wo",
+				"src/World.hx"
+			],
+			[
+				"pix",
+				"Lib/PixelFilter.hx"
+			],
+			[
+				"room",
+				"Source/Room.hx"
+			],
+			[
+				"h",
+				"Source/Hero.hx"
+			],
+			[
+				"hero",
+				"Source/Hero.hx"
+			],
+			[
+				"pi",
+				"Lib/PixelFilter.hx"
+			],
+			[
+				"com",
+				"Source/Common.hx"
+			],
+			[
+				"t",
+				"Source/Title.hx"
+			],
+			[
+				"main",
+				"Source/Main.hx"
+			],
+			[
+				"pan",
+				"Lib/Panel.hx"
+			],
+			[
+				"p",
+				"project.xml"
+			],
+			[
+				"wor",
+				"Source/World.hx"
+			],
+			[
+				"bu",
+				"Source/BuddhaMark2.hx"
+			],
+			[
+				"til",
+				"Lib/Tiles.hx"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 187.0,
+	"status_bar_visible": true
+}
